@@ -1,7 +1,15 @@
 <h1><a href="/meetings">All meetings</a></h1>
 <div ng-app="app">
 <div ng-controller="meetingsCtrl" ng-init="setup()">
-  <div ng-repeat="meeting in meetings">
+Search here for the name of your meeting
+<input ng-model="meetingSearch" list="names"> <br>
+<datalist id="names">
+  <option ng-repeat="meeting in meetings">
+  {{meeting.name}}
+  </option>
+</datalist>
+<button ng-click="sortByAttribute()">Sort by Date</button>
+  <div ng-repeat="meeting in meetings | filter: { name: meetingSearch } | orderBy:attribute:descending">
     <h3><a href="/meetings/{{meeting.id }}">{{ meeting.name }} </a></h3>
     <p>
       Tags:

@@ -11,6 +11,11 @@
       })
     }
 
+    $scope.sortByAttribute = function(){
+      $scope.attribute = 'startTime';
+      $scope.descending = !$scope.descending;
+    }
+    // end of the controller
   });
 
 
